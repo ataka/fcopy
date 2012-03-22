@@ -27,7 +27,7 @@ your cursor back to the paste point.  <kbd>q</kbd> just exits and does not move.
 ### Moving Commands
 
 Some 1-stroke key commands are prepared, like **view-mode**.  <kbd>f</kbd>,
-<kbd>b</kbd>, <kbd>n</kbd>, <kbd>p</kbd>, <kbd>a</kbd>, <kbd>e<kbd> are in
+<kbd>b</kbd>, <kbd>n</kbd>, <kbd>p</kbd>, <kbd>a</kbd>, <kbd>e</kbd> are in
 common with <kbd>C-f</kbd>, <kbd>C-b</kbd>, <kbd>C-n</kbd>, <kbd>C-p</kbd>,
 <kbd>C-a</kbd>, <kbd>C-e</kbd>, respectively.
 
