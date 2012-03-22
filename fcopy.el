@@ -190,8 +190,8 @@
     ("{" . "}")
     ("[" . "]")
     ("<" . ">")
-    ("°÷" . "°◊")
-    ("°ÿ" . "°Ÿ")
+    ("„Äå" . "„Äç")
+    ("„Äé" . "„Äè")
     ("/*" . "*/"))
    "*Alist of pair strings to copy between them.
 Car is left string and cdr is right.
@@ -621,7 +621,7 @@ If the point is in the blocks, skip blakns backward and copy block."
       ;; Function regexp-opt in Emacs 20.7 or XEmacs 21 fails to
       ;; produce correct regexp when the strings are mixed with
       ;; Japanese and English.
-      "\\*/\\|/\\*\\|[]()<>[{}°÷-°Ÿ]"
+      "\\*/\\|/\\*\\|[]()<>[{}„Äå-„Äè]"
     (regexp-opt (append (mapcar (lambda (x) (car x)) fcopy-pair-string-alist)
 			(mapcar (lambda (x) (cdr x)) fcopy-pair-string-alist)))))
 
@@ -874,10 +874,10 @@ If optional argument WITHOUT-ENCLOSURE is nil, copy ``' and `'', too."
   (interactive "P")
   (fcopy-between-* "`" "'" 1 without-enclosure))
 (defun fcopy-between-japanese-quote (&optional without-enclosure)
-  "Copy text between `°÷' and `°◊'.
-If optional argument WITHOUT-ENCLOSURE is nil, copy `°÷' and `°◊', too."
+  "Copy text between `„Äå' and `„Äç'.
+If optional argument WITHOUT-ENCLOSURE is nil, copy `„Äå' and `„Äç', too."
   (interactive "P")
-  (fcopy-between-* "°÷" "°◊" 1 without-enclosure))
+  (fcopy-between-* "„Äå" "„Äç" 1 without-enclosure))
 
 (defun fcopy-between-latex-env (&optional without-enclosure)
   "Copy text between `\\begin{...}' and `\\end{...}'.
@@ -1364,7 +1364,7 @@ Used from `fmodify-replace-prompt', Prefix argument can't work."
   "Search to numeric number and replace it"
   (interactive)
   (catch 'math-quit
-    (while (re-search-forward "[+-°‹°›]?[0-9£∞-£π,°§]+[.°•]?[0-9£∞-£π]*" nil t)
+    (while (re-search-forward "[+-Ôºã‚àí]?[0-9Ôºê-Ôºô,Ôºå]+[.Ôºé]?[0-9Ôºê-Ôºô]*" nil t)
       (let*
 	  ((beg    (match-beginning 0))
 	   (end    (match-end 0))
