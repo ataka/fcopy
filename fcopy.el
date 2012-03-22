@@ -1,9 +1,8 @@
 ;;; fcopy.el --- Funny Copy mode -*-emacs-lisp-*-
 
-;; Copyright (c) 1998-2003 Masayuki Ataka <ataka@milk.freemail.ne.jp>
-;; $Id: fcopy.el,v 2.43 2003/09/11 01:18:19 Mark Exp $
+;; Copyright (c) 1998-2003, 2012 Masayuki Ataka <masayuki.ataka@gmail.com>
 
-;; Author: Masayuki Ataka <ataka@milk.freemail.ne.jp>
+;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
 ;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
@@ -88,8 +87,8 @@
 
 ;; The latest fcopy.el is available at:
 ;;
-;;   http://pop-club.hp.infoseek.co.jp/emacs/prog.html	(in English)
-;;   http://pop-club.hp.infoseek.co.jp/emacs/fcopy.html	(in Japanese)
+;;   https://github.com/ataka/fcopy
+;;
 
 ;; The other simple copy command is destributed with Emacs.  See
 ;; misc.el in your lisp directory.  It copies characters from previous
@@ -109,10 +108,12 @@
 
 ;;; Version and ChangeLog:
 
-(defconst fcopy-version "5.2.6"
+(defconst fcopy-version "6.0"
   "Version numbers of this version of Funny Copy.")
-(defconst fcopy-revision "$Revision: 2.43 $"
-  "Revision numbers of this revision of Funny Copy.")
+
+;; ver 6.0
+;; * Hosted at github.
+;; * Support utf-8 (unsupport EUC-JP).
 
 ;; ver 5.2.6  (Rev. 2.43)
 ;; * fcopy skips black lines in line moving commands.
@@ -1014,9 +1015,8 @@ bottom of the window.  (ARG should be less than the height of the window.)"
 If optional argument HERE is non-nil, insert string at point."
   (interactive "P")
   (let ((version-string
-	 (format "Funny Copy ver. %s  %s."
-		 fcopy-version
-		 fcopy-revision)))
+	 (format "Funny Copy ver. %s."
+		 fcopy-version)))
     (if here
 	(insert version-string)
       (if (interactive-p)
