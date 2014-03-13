@@ -1453,4 +1453,4 @@ Turning on Funny Modify overwrite mode runs the normal hook
 ;;;
 (provide 'fcopy)
 
-;;; End of fcopy.el
+;;; fcopy.el ends here
