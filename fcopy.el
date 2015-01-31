@@ -1446,11 +1446,12 @@ Turning on Funny Modify overwrite mode runs the normal hook
 ;; Codes to absorb system and version dependencies.
 ;;;
 
-(defun fcopy-mark-active-p ()
+(defmacro fcopy-mark-active-p ()
   "Return non-nil if mark is active."
-  (if (boundp 'mark-active)
-      mark-active
-    (region-exists-p)))
+  (cond
+   ((boundp 'mark-active) 'mark-active)
+   ((fboundp 'region-exists-p) '(region-exists-p))
+   (t nil)))
 
 ;;;
 (provide 'fcopy)
