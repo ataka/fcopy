@@ -1,7 +1,7 @@
 ;;; fcopy.el --- Funny Copy mode
 ;; -*- Mode: Emacs-Lisp -*-
 
-;; Copyright (c) 1998-2003, 2012 Masayuki Ataka <masayuki.ataka@gmail.com>
+;; Copyright (c) 1998-2003, 2012, 2015 Masayuki Ataka <masayuki.ataka@gmail.com>
 
 ;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
 ;; Keywords: convenience
