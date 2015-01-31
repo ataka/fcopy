@@ -4,6 +4,7 @@
 ;; Copyright (c) 1998-2003, 2012, 2015 Masayuki Ataka <masayuki.ataka@gmail.com>
 
 ;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
+;; URL: https://github.com/ataka/fcopy
 ;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
