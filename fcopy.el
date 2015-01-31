@@ -1,4 +1,4 @@
-;;; fcopy.el --- Funny Copy mode
+;;; fcopy.el --- Funny Copy, set past point HERE then search copy text
 ;; -*- Mode: Emacs-Lisp -*-
 
 ;; Copyright (c) 1998-2003, 2012, 2015 Masayuki Ataka <masayuki.ataka@gmail.com>
