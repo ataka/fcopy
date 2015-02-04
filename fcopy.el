@@ -163,11 +163,11 @@
 
 ;; ver 4.0  2000/02/22 22:41:02  Masayuki Ataka
 ;; The Fourth version of Funny Copy.  Support Funny Modify mode.
-;; New function nawe was `funny-copy-mode', binded to `C-c k'
+;; New function name was `funny-copy-mode', binded to `C-c k'
 
 ;; ver 3.0  1999/04/24 00:17:33  Masayuki Ataka
 ;; Third version of Funny Copy.  Rewrite code from full scratch,
-;; implemented with major mode.  New function nawe was
+;; implemented with major mode.  New function name was
 ;; `MA-Special-copy-mode', means Masayuki Ataka special copy mode.
 ;; Also support seeing the inside of kill-ring.
 
@@ -1021,7 +1021,7 @@ If optional argument HERE is non-nil, insert string at point."
 		 fcopy-version)))
     (if here
 	(insert version-string)
-      (if (interactive-p)
+      (if (fcopy-called-interactively-p)
 	  (message "%s" version-string)
 	version-string))))
 
@@ -1117,7 +1117,7 @@ If called directly, modified text is the last kill-ring element."
   (if (null kill-ring)
       (error "kill-ring is empty, Funny Modify doesn't work."))
 
-  (if (interactive-p)
+  (if (fcopy-called-interactively-p)
       (setq fcopy-window (current-window-configuration)
 	    fcopy-point  (point)))
   (let ((mode fmodify-default-mode))
@@ -1453,7 +1453,12 @@ Turning on Funny Modify overwrite mode runs the normal hook
    ((fboundp 'region-exists-p) '(region-exists-p))
    (t nil)))
 
-;;;
+(defmacro fcopy-called-interactively-p ()
+  "Return t if the containing function was called by `call-interactively'."
+  (cond
+   ((fboundp 'called-interactively-p) '(called-interactively-p 'any)) ; < 23.2
+   (t '(interactive-p))))
+
 (provide 'fcopy)
 
 ;;; fcopy.el ends here
