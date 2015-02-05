@@ -240,7 +240,6 @@ symbols are 'edit or 'overwrite.")
 ;;;
 
 
-;;;###autoload
 (defvar fcopy-mode nil
   "Toggle fcopy-mode.
 Setting this variable directly does not take effect;
