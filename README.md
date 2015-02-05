@@ -12,8 +12,9 @@ and exit fcopy-mode.
 
 Put this in your .emacs file:
 
-    (autoload 'fcopy-mode "fcopy" "copy lines or region without editing." t)
-
+```elisp
+(autoload 'fcopy-mode "fcopy" "copy lines or region without editing." t)
+```
 
 ## Usage of fcopy
 
