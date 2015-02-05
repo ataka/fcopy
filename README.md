@@ -118,7 +118,7 @@ Copy commands take us back to the past point, insert copy text, and exit Funny C
     use <kbd>&quot;</kbd> (double quote) instead.</dd>
 
    <dt><kbd>;</kbd> (semi-colon)</dt>
-   <dd>copy comments. Comment pattern is depende on major mode.</dd>
+   <dd>copy comments. Comment pattern is depended on major mode.</dd>
 </dl>
 
 If you want not to copy text, but to cut, toggle <dfn>delete flag</dfn> with

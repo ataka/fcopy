@@ -44,7 +44,7 @@
 ;; It prepares modify buffer, that you can modify the text with
 ;; replacement or overwrite.  See `fmodify-default-mode' or `C-h m' in
 ;; the modify buffer.  To insert modified text, type `C-cC-c'.
-;; `C-cC-q' for quit modifing, and paste nothing.
+;; `C-cC-q' for quit modifying, and paste nothing.
 
 ;; forward   backward   Unit of Moving
 ;; --------  --------   --------
@@ -92,9 +92,9 @@
 ;;   https://github.com/ataka/fcopy
 ;;
 
-;; The other simple copy command is destributed with Emacs.  See
+;; The other simple copy command is distributed with Emacs.  See
 ;; misc.el in your lisp directory.  It copies characters from previous
-;; nonblank line, starting just above point.  But remmember, fcopy has
+;; non-blank line, starting just above point.  But remember, fcopy has
 ;; no influences from misc.el.
 
 ;;; How to install:
@@ -130,7 +130,7 @@
 
 ;; ver 5.2.4  (Rev. 2.32)  2003/06/16 10:45:47
 ;; * Fix for XEmacs.
-;; * Find propper paren pair even the point is in the multiple parens.
+;; * Find proper paren pair even the point is in the multiple parens.
 
 ;; ver 5.2.3  (Rev. 2.26)  2002/12/02 14:20:41
 ;; * Support move mode; delete text and copy it.
@@ -451,8 +451,8 @@ is non-nil."
 
 (defun fcopy-exit (&optional interactive-p)
   "Exit fcopy-mode without point move.
-If optional arg INTERACTIVE-P is nil, return window configuretion.
-\\[fcopy-quit] move point back ot where fcopy start."
+If optional arg INTERACTIVE-P is nil, return window configuration.
+\\[fcopy-quit] move point back to where fcopy start."
   (interactive '(t))
   (fcopy-disable)
   (unless interactive-p
@@ -557,7 +557,7 @@ If optional argument BLANK is toggled, remove white spaces around line."
     (fcopy-insert)))
 
 (defun fcopy-char (&optional arg)
-  "Copy APG's forward charactors after point."
+  "Copy APG's forward characters after point."
   (interactive "p")
   (let ((beg (point))
 	(end (progn (forward-char arg) (point))))
@@ -573,7 +573,7 @@ If optional argument BLANK is toggled, remove white spaces around line."
 
 (defun fcopy-region (beg end &optional blank)
   "Copy region from BEG to END.
-If optional argument BLANG is toggled, shrink white spaces into one
+If optional argument BLANK is toggled, shrink white spaces into one
 space and remove line feed."
   (interactive "r\nP")
   (if blank
@@ -605,7 +605,7 @@ space and remove line feed."
 (defun fcopy-block ()
   "Copy continuous block text.
 The end of the continuous block text is blanks (space, tab, or newline).
-If the point is in the blocks, skip blakns backward and copy block."
+If the point is in the blocks, skip blanks backward and copy block."
   (interactive)
   (let ((beg (progn
 	       (when (looking-at "[ \t\n]")
@@ -642,7 +642,7 @@ Variable `fcopy-pair-regexp' which is automatically constructed from
 *CAUTION*
 
 If your Emacs is XEmacs or Emacs version is 19 or less, variable
-`fcopy-pair-egexp' is not updated automatically.  So You shold edit
+`fcopy-pair-egexp' is not updated automatically.  So You should edit
 the variable when the value of `fcopy-pair-string-alist' is changed.
 The regexp should match all strings in `fcopy-pair-string-alist'."
   (interactive "p")
@@ -691,7 +691,7 @@ The regexp should match all strings in `fcopy-pair-string-alist'."
   "Copy text between pair strings (not include pair string).
 With prefix arg ARG, jump back ARG'th pair strings.
 
-See function `fcopy-between-pair' for more informatio."
+See function `fcopy-between-pair' for more information."
   (interactive "p")
   (unless arg (setq arg 1))
   (fcopy-between-pair arg t))
@@ -715,7 +715,7 @@ one of the single pair character.
 
 *CAUTION*
 If your Emacs version is 19 or less, var `fcopy-spair-regexp' is not
-updated automatically.  So You shold edit the variable when the value
+updated automatically.  So You should edit the variable when the value
 of `fcopy-spair-string-list' is changed.  The regexp should match
 all characters in `fcopy-spair-string-list'."
   (interactive)
@@ -759,7 +759,7 @@ Use var `comment-start' and `comment-end' to know the comment pattern.
 If `comment-end' is empty, copy from comment-start till end-of-line.
 
 If optional argument NO-COMMENT-STR is non-nil, does not copy
-`comment-start', `comment-end', and the blans around comments."
+`comment-start', `comment-end', and the blanks around comments."
   (interactive "P")
   (let* ((cstart comment-start)
 	 (cend   comment-end)
@@ -797,7 +797,7 @@ If optional argument NO-COMMENT-STR is non-nil, does not copy
 
 
 (defun fcopy-between-* (left right arg without-enclosure)
-  "Copy region between regexp LEFt and RIGHT.
+  "Copy region between regexp LEFT and RIGHT.
 If fourth argument WITHOUT-ENCLOSURE is nil, copy also LEFT and RIGHT.
 Otherwise, does not copy them."
   (let (beg end)
@@ -805,7 +805,7 @@ Otherwise, does not copy them."
       ;; Left
       (unless (re-search-backward left nil t arg)
 	(error "No match %s" left))
-      ;; Why Emacs mis-match \\\\*( in backward search??
+      ;; Why Emacs miss-match \\\\*( in backward search??
       (when without-enclosure
 	(forward-char (length (match-string 0)))
 	(skip-chars-forward " \t\n"))
@@ -828,7 +828,7 @@ Otherwise, does not copy them."
   (interactive "p")
   (fcopy-between-* "(" ")" arg nil))
 (defun fcopy-between-paren-without-enclosure (arg)
-  "Copr text betwenn `(' and `)' without pair of enclusurs."
+  "Copy text between `(' and `)' without pair of enclosures."
   (interactive "p")
   (fcopy-between-* "(" ")" arg t))
 
@@ -837,7 +837,7 @@ Otherwise, does not copy them."
   (interactive "p")
   (fcopy-between-* "{" "}" arg nil))
 (defun fcopy-between-brace-without-enclosure (arg)
-  "Copr text betwenn `{' and `}' without pair of enclusurs."
+  "Copy text between `{' and `}' without pair of enclosures."
   (interactive "p")
   (fcopy-between-* "{" "}" arg t))
 
@@ -846,7 +846,7 @@ Otherwise, does not copy them."
   (interactive "P")
   (fcopy-between-* "\\[" "\\]" arg nil))
 (defun fcopy-between-bracket-without-enclosure (arg)
-  "Copr text betwenn `[' and `]' without pair of enclusurs."
+  "Copy text between `[' and `]' without pair of enclosures."
   (interactive "p")
   (fcopy-between-* "\\[" "\\]" arg t))
 
@@ -884,7 +884,7 @@ If optional argument WITHOUT-ENCLOSURE is nil, copy `「' and `」', too."
 
 (defun fcopy-between-latex-env (&optional without-enclosure)
   "Copy text between `\\begin{...}' and `\\end{...}'.
-If optional argument WITHOUT-ENCLOSURE is nil, copy LaTeX commad, too."
+If optional argument WITHOUT-ENCLOSURE is nil, copy LaTeX command, too."
   (interactive "P")
   (fcopy-between-* "\\\\begin{.+}" "\\\\end{.+}" 1 without-enclosure))
 
@@ -1065,7 +1065,7 @@ If optional argument HERE is non-nil, insert string at point."
 ;;; Commentary:
 ;;
 ;; Funny Modify (Fmodify) has two major modes to modify
-;; text. `edit-mode' and `ovrewrite-mode'.
+;; text. `edit-mode' and `overwrite-mode'.
 ;;
 ;; Edit mode (replace)
 ;; ---------
@@ -1079,7 +1079,7 @@ If optional argument HERE is non-nil, insert string at point."
 ;;  .        set mark
 ;;  
 ;;  ;        query replace
-;;  :        query replae with regexp
+;;  :        query replace with regexp
 ;;  ,        query replace in the region
 ;;  +        replace string
 ;;  *        replace regexp
@@ -1126,7 +1126,7 @@ If called directly, modified text is the last kill-ring element."
      ((eq mode 'edit)        (fmodify-edit-mode))
      ((eq mode 'overwrite)   (fmodify-overwrite-mode))
      (t  (unwind-protect
-	     (error "Funny Modify failed.  Theres is no text in kill-ring.")
+	     (error "Funny Modify failed.  There is no text in kill-ring.")
 	   (fcopy-exit))))))
 
 (defun fmodify-pop-to-buffer ()
@@ -1244,7 +1244,7 @@ If called directly, modified text is the last kill-ring element."
 The other major mode is overwrite mode.  To enter overwrite mode,
 type \\[fmodify-overwrite-mode].
 
-Edit mode is easy to call replace command.  For exapmple,
+Edit mode is easy to call replace command.  For example,
 \\[query-replace] is for `query-replace' and \\[query-replace-regexp]
 is for `query-replace-regexp'.
 
@@ -1383,11 +1383,11 @@ Used from `fmodify-replace-prompt', Prefix argument can't work."
 		 (char-to-string char))))
 	    (delete-region beg end)
 	    (insert to-string)))
-	 ;; N)ot reploce
+	 ;; N)ot replace
 	 ((equal char ?n)  nil)
 	 ;; S)kip replace
 	 ((equal char ?s)  nil)
-	 ;; Q)uit math replaec
+	 ;; Q)uit math replace
 	 ((equal char ?q)
 	  (throw 'math-quit t))
 	 (t (error "Failed math replacement."))) ;exit cond block
@@ -1418,7 +1418,7 @@ The other major mode is edit mode.  To enter edit mode, type
 In overwrite mode, every command but [space] overwrite char.  [space]
 do not overwrite but insert itself.
 
-When modifing was finished, type \\[fmodify-insert] to insert modified
+When modifying was finished, type \\[fmodify-insert] to insert modified
 text to position where fcopy starts.
 
 \\{fmodify-overwrite-mode-map}
