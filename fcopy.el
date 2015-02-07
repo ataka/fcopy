@@ -225,6 +225,23 @@ You should reflect the change to `fcopy-spair-regexp'.")
 
 
 ;;;
+;; Codes to absorb system and version dependencies.
+;;;
+
+(defmacro fcopy-mark-active-p ()
+  "Return non-nil if mark is active."
+  (cond
+   ((boundp 'mark-active) 'mark-active)
+   ((fboundp 'region-exists-p) '(region-exists-p))
+   (t nil)))
+
+(defmacro fcopy-called-interactively-p ()
+  "Return t if the containing function was called by `call-interactively'."
+  (cond
+   ((fboundp 'called-interactively-p) '(called-interactively-p 'any)) ; < 23.2
+   (t '(interactive-p))))
+
+;;;
 ;; Funny Copy
 ;;;
 
@@ -1046,23 +1063,6 @@ If optional argument HERE is non-nil, insert string at point."
      ((= mode 3) (setq fcopy-mode " FC:dm")))
     (force-mode-line-update)))
 
-
-;;;
-;; Codes to absorb system and version dependencies.
-;;;
-
-(defmacro fcopy-mark-active-p ()
-  "Return non-nil if mark is active."
-  (cond
-   ((boundp 'mark-active) 'mark-active)
-   ((fboundp 'region-exists-p) '(region-exists-p))
-   (t nil)))
-
-(defmacro fcopy-called-interactively-p ()
-  "Return t if the containing function was called by `call-interactively'."
-  (cond
-   ((fboundp 'called-interactively-p) '(called-interactively-p 'any)) ; < 23.2
-   (t '(interactive-p))))
 
 (provide 'fcopy)
 
