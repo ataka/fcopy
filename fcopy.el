@@ -498,19 +498,19 @@ If optional forth argument DELETE is non-nil, cut text and paste it."
 
 (defun fcopy-insert ()
   "Exit fcopy and insert saved text."
-  ;; (if fcopy-modify
-  ;;     (progn
-  ;; 	(fcopy-disable)
-  ;; 	(set-window-configuration fcopy-window)
-  ;; 	(goto-char fcopy-point))
-  ;; 	(fmodify-mode))
+  (if fcopy-modify
+      (progn
+  	(fcopy-disable)
+  	(set-window-configuration fcopy-window)
+  	(goto-char fcopy-point)
+	(run-hooks 'fcopy-modify-hook))
     ;; No modify prefix
     (fcopy-exit)
     (fcopy-undo-boundary)
     (insert (car kill-ring))
     (when fcopy-back
       (backward-char fcopy-back)
-      (setq fcopy-back nil)))
+      (setq fcopy-back nil))))
 
 (defun fcopy-line ()
   "Copy line behind point like `kill-line'.
