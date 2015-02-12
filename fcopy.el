@@ -503,6 +503,10 @@ If optional forth argument DELETE is non-nil, cut text and paste it."
   	(fcopy-disable)
   	(set-window-configuration fcopy-window)
   	(goto-char fcopy-point)
+	(if (fcopy-called-interactively-p)
+	    (setq fcopy-window (current-window-configuration)
+		  fcopy-point  (point)))
+	(fcopy-exit)
 	(run-hooks 'fcopy-modify-hook))
     ;; No modify prefix
     (fcopy-exit)
