@@ -101,11 +101,11 @@
 
 ;; To install, put this in your .emacs file:
 ;;
-;;  (autoload 'fcopy-mode "fcopy" "copy lines or region without editing." t)
+;;  (autoload 'fcopy "fcopy" "copy lines or region without editing." t)
 ;;
 ;; And bind it to any key you like:
 ;;
-;;  (define-key mode-specific-map "k" 'fcopy-mode)  ; C-c k for fcopy-mode
+;;  (define-key mode-specific-map "k" 'fcopy)  ; C-c k for fcopy
 ;;
 
 ;;; Version and ChangeLog:
@@ -371,7 +371,8 @@ use the function `fcopy'.")
 
 ;;;###autoload
 (defun fcopy ()
-  "Start fcopy-mode"
+  "Copy lines or region without editing
+Start `fcopy-mode'."
   (interactive)
   (fcopy-mode t))
     
