@@ -370,6 +370,11 @@ use the function `fcopy'.")
 ;;; Commands
 
 ;;;###autoload
+(defun fcopy ()
+  "Start fcopy-mode"
+  (interactive)
+  (fcopy-mode t))
+    
 (defun fcopy-mode (&optional arg)
   "Minor mode for copying text but not editing it.
 Letters do not insert themselves.  Instead following commands are
@@ -379,8 +384,7 @@ provided.  Most commands take prefix arguments.
 
 Entry to this mode calls the value of `fcopy-mode-hook' if that value
 is non-nil."
-  (interactive "*P")
-  (if (and arg (< (prefix-numeric-value arg) 0))
+  (if (not arg)
       ;; Toggle off funny copy.
       (call-interactively 'fcopy-exit)
     ;; Toggle on funny copy.
