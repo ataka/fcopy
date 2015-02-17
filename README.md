@@ -2,23 +2,23 @@
 
 ## Introduction
 
-<dfn>Funny copy</dfn> is a minor mode to copy text; first, set the **paste
-point**, and next look for the text to copy.  The past point is the point where
-fcopy-mode start.  One stroke commands are provided to search and copy the text.
-Copy commands automatically back the cursor to the past point, insert the text,
-and exit fcopy-mode.
+<dfn>fcopy</dfn> starts `fcopy-mode`, a minor mode to copy text; first, set the
+**paste point**, and next look for the text to copy.  The past point is the
+point where fcopy-mode start.  One stroke commands are provided to search and
+copy the text.  Copy commands automatically back the cursor to the past point,
+insert the text, and exit fcopy-mode.
 
 ## Install fcopy
 
 Put this in your .emacs file:
 
 ```elisp
-(autoload 'fcopy-mode "fcopy" "copy lines or region without editing." t)
+(autoload 'fcopy "fcopy" "Copy lines or region without editing." t)
 ```
 
 ## Usage of fcopy
 
-<kbd>M-x fcopy-mode</kbd> takes you into Funny Copy mode.  The place where you
+<kbd>M-x fcopy</kbd> brings you into Funny Copy mode.  The place where you
 get in fcopy-mode is the paste point; the text you choose to copy will be
 inserted.
 

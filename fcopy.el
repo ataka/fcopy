@@ -101,11 +101,11 @@
 
 ;; To install, put this in your .emacs file:
 ;;
-;;  (autoload 'fcopy-mode "fcopy" "copy lines or region without editing." t)
+;;  (autoload 'fcopy "fcopy" "copy lines or region without editing." t)
 ;;
 ;; And bind it to any key you like:
 ;;
-;;  (define-key mode-specific-map "k" 'fcopy-mode)  ; C-c k for fcopy-mode
+;;  (define-key mode-specific-map "k" 'fcopy)  ; C-c k for fcopy
 ;;
 
 ;;; Version and ChangeLog:
@@ -370,6 +370,12 @@ use the function `fcopy'.")
 ;;; Commands
 
 ;;;###autoload
+(defun fcopy ()
+  "Copy lines or region without editing
+Start `fcopy-mode'."
+  (interactive)
+  (fcopy-mode t))
+    
 (defun fcopy-mode (&optional arg)
   "Minor mode for copying text but not editing it.
 Letters do not insert themselves.  Instead following commands are
@@ -379,8 +385,7 @@ provided.  Most commands take prefix arguments.
 
 Entry to this mode calls the value of `fcopy-mode-hook' if that value
 is non-nil."
-  (interactive "*P")
-  (if (and arg (< (prefix-numeric-value arg) 0))
+  (if (not arg)
       ;; Toggle off funny copy.
       (call-interactively 'fcopy-exit)
     ;; Toggle on funny copy.
