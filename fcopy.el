@@ -4,6 +4,7 @@
 ;; Copyright (c) 1998-2003, 2012, 2015 Masayuki Ataka <masayuki.ataka@gmail.com>
 
 ;; Author: Masayuki Ataka <masayuki.ataka@gmail.com>
+;; Version: 7.0
 ;; URL: https://github.com/ataka/fcopy
 ;; Keywords: convenience
 
@@ -101,7 +102,7 @@
 
 ;; To install, put this in your .emacs file:
 ;;
-;;  (autoload 'fcopy "fcopy" "copy lines or region without editing." t)
+;;  (autoload 'fcopy "fcopy" "Copy lines or region without editing." t)
 ;;
 ;; And bind it to any key you like:
 ;;
@@ -110,8 +111,13 @@
 
 ;;; Version and ChangeLog:
 
-(defconst fcopy-version "6.0"
+(defconst fcopy-version "7.0"
   "Version numbers of this version of Funny Copy.")
+
+;; ver 7.0  2015/02/19
+;; * New command fcopy; Do not call fcopy-mode directly.
+;; * Drop fmodify-mode, see sugaryank.
+;; * Available in melpa.
 
 ;; ver 6.0
 ;; * Hosted at github.
