@@ -247,6 +247,25 @@ You should reflect the change to `fcopy-spair-regexp'.")
    ((fboundp 'called-interactively-p) '(called-interactively-p 'any)) ; < 23.2
    (t '(interactive-p))))
 
+(if (not (fboundp 'unless))
+    (defmacro unless (cond &rest body) ; Introduced in Emacs 20.1
+      "If COND yields nil, do BODY, else return nil.
+When COND yields nil, eval BODY forms sequentially and return
+value of last one, or nil if there are none.
+
+\(fn COND BODY...)"
+      (cons 'if (cons cond (cons nil body)))))
+
+(unless (fboundp 'when)
+  (defmacro when (cond &rest body) ; Introduced in Emacs 20.1
+    "If COND yields non-nil, do BODY, else return nil.
+When COND yields non-nil, eval BODY forms sequentially and return
+value of last one, or nil if there are none.
+
+\(fn COND BODY...)"
+    (list 'if cond (cons 'progn body))))
+
+
 ;;;
 ;; Funny Copy
 ;;;
