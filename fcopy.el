@@ -265,6 +265,17 @@ value of last one, or nil if there are none.
 \(fn COND BODY...)"
     (list 'if cond (cons 'progn body))))
 
+(unless (fboundp 'with-temp-buffer)
+  (defmacro with-temp-buffer (&rest body) ; Introduced in Emacs 20.1
+    "Create a temporary buffer, and evaluate BODY there like `progn'."
+    (let ((temp-buffer (make-symbol "temp-buffer")))
+      `(let ((,temp-buffer (generate-new-buffer " *temp*")))
+	 (with-current-buffer ,temp-buffer
+	   (unwind-protect
+	       (progn ,@body)
+	     (and (buffer-name ,temp-buffer)
+		  (kill-buffer ,temp-buffer))))))))
+
 
 ;;;
 ;; Funny Copy
